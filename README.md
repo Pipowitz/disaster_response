@@ -1,5 +1,7 @@
 # Disaster Response Pipeline Project
 
+This project is meant to put texts of disasters into separate categories in a flask environment.
+
 ### Instructions:
 1. Run the following commands in the project's root directory to set up your database and model.
 
