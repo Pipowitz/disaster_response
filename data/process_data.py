@@ -46,6 +46,9 @@ def clean_data(df):
     
         categories[column] = pd.to_numeric(categories[column])
         
+        # some of the values are "2" and need to be converted to "1"
+        categories[column] = categories[column].apply(lambda x:0 if x==0 else 1)
+        
     # drop the categories column, as it's no longer needed
     df.drop("categories", axis=1, inplace=True)
     
@@ -68,7 +71,7 @@ def save_data(df, database_filename):
     '''
     
     engine = create_engine('sqlite:///'+database_filename)
-    df.to_sql('Disastertable', engine, index=False)  
+    df.to_sql('Disastertable', engine, index=False, if_exists="replace")  
 
 
 def main():
