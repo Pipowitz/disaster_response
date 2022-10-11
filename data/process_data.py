@@ -14,8 +14,8 @@ def load_data(messages_filepath, categories_filepath):
         -df: a pandas dataframe
     '''
     
-    messages = pd.read_csv("messages.csv")
-    categories = pd.read_csv("categories.csv")
+    messages = pd.read_csv(messages_filepath)
+    categories = pd.read_csv(categories_filepath)
     df = pd.merge(messages, categories, on="id")
     
     return df
@@ -67,7 +67,7 @@ def save_data(df, database_filename):
         
     '''
     
-    engine = create_engine('sqlite://+'database_filename)
+    engine = create_engine('sqlite:///'+database_filename)
     df.to_sql('Disastertable', engine, index=False)  
 
 
